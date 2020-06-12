@@ -10,7 +10,8 @@
     "prebuild": "run-p clean:build",
     "build": "webpack --config webpack.config.prod.js",
     "postbuild": "run-p server:build",
-    "server:build": "http-server ./build"
+    "server:build": "http-server ./build",
+    "heroku-postbuild": "webpack -p"
   },
   "jest": {
     "moduleNameMapper": {
