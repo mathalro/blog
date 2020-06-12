@@ -2,13 +2,13 @@
   "name": "blog",
   "description": "A blog for Developers",
   "scripts": {
-    "start": "run-p start:dev",
+    "start-dev": "run-p start:dev",
     "start:dev": "webpack-dev-server --config webpack.config.dev.js --port 5000",
     "test": "jest --watch",
     "test:ci": "jest",
     "clean:build": "rimraf ./build && mkdir build",
     "prebuild": "run-p clean:build",
-    "build": "webpack --config webpack.config.prod.js",
+    "start": "webpack --config webpack.config.prod.js",
     "postbuild": "run-p server:build",
     "server:build": "http-server ./build",
     "heroku-postbuild": "webpack -p"
