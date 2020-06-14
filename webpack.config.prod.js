@@ -1,4 +1,3 @@
-const webpack = require("webpack");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -9,10 +8,8 @@ process.env.NODE_ENV = "development";
 module.exports = {
   mode: "production",
   target: "web",
-  devtool: "source-map", // indicates that we can see the original code in the browser
   entry: "./src/index",
   output: {
-    // in development mode it will be in the memory, but it requires this folder
     path: path.resolve(__dirname, "build"),
     publicPath: "/",
     filename: "bundle.js",
@@ -22,13 +19,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
     }),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-      "process.env.API_URL": JSON.stringify("http://localhost:5001"),
-    }),
     new HtmlWebPackPlugin({
       template: "src/index.html",
-      //favicon: "src/favicon.ico",
       minify: {
         removeComments: true,
         collapseWhitespace: true,
